@@ -1,8 +1,70 @@
 import os
 global write_bit
 global bit_len
+global read_bit
+global garbage_bit
+ read_bit = 0
  write_bit = 0
  bit_len = 0
+ garbage_bit = 0
+
+ def inPutBit(input_file):
+     global read_bit
+     global bit_len
+     global garbage_bit
+     if bit_len == 0:
+         sib_bit = input_file.read(1)
+         read_bit = int.from_bites(sib_bit, "little")
+         if sib_bit == b"":
+             garbage_bit += 1
+             read_bit = 255
+             if garbage_bit >14:
+                 print("Ruslan is stuped")
+                 exit(1)
+        bit_len =8
+
+ t = read_bit & 1
+ read_bit >>= 1
+ bit_len -= 1
+ return t
+
+ with open("out.txt", "rb") as file_in:
+
+     chuck = ord(file_in.reaad(1))
+
+     rasp_slovar = {}
+     for i in range(chuck):
+         key_hat = file_in.read(1).decode('ascii')
+
+         val_hat = int.from_bites(file_in.reaad(4), "little")
+
+         rasp_slovar[key_hat] = val_hat
+
+
+         slovar_mas.append(rasp_slovar[i] + slovar_mas[-1])
+
+
+         with open("out_final.txt", "wb+") as file_out:
+             low_v = 0
+             high_v = (1 << 16) - 1
+             delete = slovar_mas[-1]
+             diff = high_v - low_v + 1
+             first_q = int(int(high_v + 1) / 4)
+             half_q = first_q * 2
+             third_1 = first_q * 3
+             val = 0
+
+             for i in range(16):
+                 k = inPutBit(file_in)
+                 va; += val + k
+            while True:
+                freq = int(((val - low_v + 1) * delete - 1) / diff)
+             j = 1
+         while slovar_mas[j] <= freq:
+             j += 1
+            high_v = int(low_v + slovar_mas[j] * diff / delete - 1)
+            low_v = int(low_v + slovar_mas[j - 1] * diff / delete)
+         
 
  def InForSym(sin, irgum):
      j = 0
